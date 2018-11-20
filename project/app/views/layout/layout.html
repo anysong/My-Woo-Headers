@@ -1,24 +1,38 @@
-{% import '../maco/default.html' as wow %}
+{# import '../maco/default.html' as wow #}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>WOW is awsome...</title>
-
+    <title>test01</title>
+    <!-- Tag为全局变量，Tag方法传入两个参数，name/source 生成相应标签 -->
+    
+    <!-- link块 -->
     {% block style %}
-        {{ Tag('link', '/components/main/main.css') }}
+        {# Tag('link', '/components/main/main.css') #}
+        {% setGlobal global_parents="parents" %}
     {% endblock %}
+    
 </head>
+    <!-- FIXME global_bar 样式是不生效的，编译时还未定义 -->
 <body class="{{ global_bar }}">
+   
+   
+    <!-- 设置全局变量 global_bar -->
+    <!-- 设置全局变量 global_foo -->
+    <!-- 设置全局变量 global_num -->
 
+    <!-- setGlobal为自定义标签 -->
     {% setGlobal global_foo="test foo", global_bar="test bar" %}
     {% setGlobal global_num=1024 %}
+    {{- global_bar -}}
+    {{- global_foo -}}
+    {{- global_num -}}
 
+     <!-- 加载body-block -->
     {% block body %} {% endblock %}
-
+    <!-- script块 -->
     {% block script %}
         {{ Tag('script', '/components/main/main.js') }}
     {% endblock %}
-
 </body>
 </html>
