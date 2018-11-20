@@ -1,0 +1,24 @@
+{% import '../maco/default.html' as wow %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>WOW is awsome...</title>
+
+    {% block style %}
+        {{ Tag('link', '/components/main/main.css') }}
+    {% endblock %}
+</head>
+<body class="{{ global_bar }}">
+
+    {% setGlobal global_foo="test foo", global_bar="test bar" %}
+    {% setGlobal global_num=1024 %}
+
+    {% block body %} {% endblock %}
+
+    {% block script %}
+        {{ Tag('script', '/components/main/main.js') }}
+    {% endblock %}
+
+</body>
+</html>
