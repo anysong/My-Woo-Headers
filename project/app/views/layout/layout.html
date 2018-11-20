@@ -1,4 +1,5 @@
-{# import '../maco/default.html' as wow #}
+{% import '../maco/default.html' as wow %}
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -12,10 +13,12 @@
         {% setGlobal global_parents="parents" %}
     {% endblock %}
     
+   
+    {{ wow.link('/components/main') }}
 </head>
     <!-- FIXME global_bar 样式是不生效的，编译时还未定义 -->
 <body class="{{ global_bar }}">
-   
+    {{ wow.npm_pkg('/components/main') }}
    
     <!-- 设置全局变量 global_bar -->
     <!-- 设置全局变量 global_foo -->

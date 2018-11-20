@@ -1,16 +1,10 @@
-    {######## 入口文件 ########}
-    {######## 依赖布局模板./layout/layout.html ########}
 {% extends './layout/layout.html' %}
-    {######## 加载body block ########}
+
 
 
 {% block style %}
-    {######## super继承当前块内容，包括变量 ########}
     {{ super() }}
-    {{ global_parents }}
-    {######## _components作用 FIXME ########}
     {{ _components | source('link') }}
-    <link rel="stylesheet" href="#">
 {% endblock %}
 
 {% block body %}
@@ -27,28 +21,13 @@
         <small><em> {# name #} @ {# version #} </em></small>
 
         {% component 'footer' %}
+        {% component 'sidebar', { foo: 1, bar: 2 } %}
+        {% setGlobal foo = 'def11111' %}
+        {% component 'module', { id:'line1', class: 'line2', foo, bar: 'lin4' } %}
         
-
 {% endblock %}
 
 {% block script %}
     {{ super() }}
-    {######## _components作用 FIXME ########}
     {{ _components | source('script') }}
 {% endblock %}
-
-{# block body #}
-   
-
-    
-   
-
-    
-
-    {# component 'module', { id:'mod1', class: 'm2', foo: 1, bar: 2 } #}
-    {# component 'module' #}
-    {# component 'sidebar', { foo: 1, bar: 2 } #}
-    {# component 'footer' #}
-
-
-{# endblock #}
